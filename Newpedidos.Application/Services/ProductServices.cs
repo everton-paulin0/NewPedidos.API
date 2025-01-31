@@ -13,7 +13,7 @@ namespace Newpedidos.Application.Services
         }
         public ResultViewModel Delete(int id)
         {
-            var product = _context.Products.SingleOrDefault(p => p.Id == id);
+            var product = _context.Product.SingleOrDefault(p => p.Id == id);
 
             if (product is null)
             {
@@ -22,7 +22,7 @@ namespace Newpedidos.Application.Services
 
             product.SetAsDeleted();
 
-            _context.Products.Update(product);
+            _context.Product.Update(product);
             _context.SaveChanges();
 
             return ResultViewModel.Success();
@@ -30,7 +30,7 @@ namespace Newpedidos.Application.Services
 
         public ResultViewModel<List<ProductItemViewModel>> GetAll(string search = "")
         {
-            var products = _context.Products
+            var products = _context.Product
             .Where(o => !o.IsDeleted && (search == "" || o.ProductName.Contains(search))).ToList();
 
             var model = products.Select(ProductItemViewModel.FromEntityProduct).ToList();
@@ -40,7 +40,7 @@ namespace Newpedidos.Application.Services
 
         public ResultViewModel<ProductViewModel> GetById(int id)
         {
-            var product = _context.Products.SingleOrDefault(p => p.Id == id);
+            var product = _context.Product.SingleOrDefault(p => p.Id == id);
 
             if (product is null)
             {
@@ -56,7 +56,7 @@ namespace Newpedidos.Application.Services
         {
             var product = model.ToEntityProduct();
 
-            _context.Products.Add(product);
+            _context.Product.Add(product);
             _context.SaveChanges();
 
             return ResultViewModel<int>.Sucess(product.Id);
@@ -64,14 +64,14 @@ namespace Newpedidos.Application.Services
 
         public ResultViewModel Update(UpdateProductInputModel model)
         {
-            var product =_context.Products.SingleOrDefault(p => p.Id == model.IdProduct);
+            var product =_context.Product.SingleOrDefault(p => p.Id == model.IdProduct);
 
             if (product is null)
             {
                 return ResultViewModel<OrderViewModel>.Error("Pedido não existe");
             }
             product.UpdateProduct(model.ProductName, model.Quantity, model.Price, model.IdProduct);
-            _context.Products.Update(product);
+            _context.Product.Update(product);
             _context.SaveChanges();
 
             return ResultViewModel.Success();

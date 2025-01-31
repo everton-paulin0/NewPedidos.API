@@ -13,7 +13,7 @@ namespace NewPedidos.Core.Entities
         {
 
         }
-        public Order(string clientDoc, string clientName)
+        public Order(string clientDoc, string clientName):base()
         {
             ClientDoc = clientDoc;
             ClientName = clientName;
@@ -26,6 +26,7 @@ namespace NewPedidos.Core.Entities
         public string ClientName { get; set; }
         public OrderStatus Status { get; set; }
         public List<Product> Products { get; set; }
+        
 
         public void Update(string clientdoc, string clientName)
         {

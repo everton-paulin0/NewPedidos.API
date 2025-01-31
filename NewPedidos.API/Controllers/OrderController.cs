@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newpedidos.Application.Command.CancelOrder;
@@ -15,6 +16,7 @@ using NewPedidos.Infractruture.Persistence;
 
 namespace NewPedidos.API.Controllers
 {
+    
     [Route("api/[controller]")]
     [ApiController]
     public class OrderController : ControllerBase

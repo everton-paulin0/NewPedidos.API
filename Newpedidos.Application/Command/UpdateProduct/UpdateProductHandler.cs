@@ -14,7 +14,7 @@ namespace Newpedidos.Application.Command.UpdateProduct
         }
         public async Task<ResultViewModel> Handle(UpdateProductCommand request, CancellationToken cancellationToken)
         {
-            var product = await _context.Products.SingleOrDefaultAsync(p => p.Id == request.IdProduct);
+            var product = await _context.Product.SingleOrDefaultAsync(p => p.Id == request.IdProduct);
 
             if (product is null)
             {
@@ -23,7 +23,7 @@ namespace Newpedidos.Application.Command.UpdateProduct
 
             product.UpdateProduct(request.ProductName, request.Quantity, request.Price, request.IdProduct);
 
-            _context.Products.Update(product);
+            _context.Product.Update(product);
             await _context.SaveChangesAsync();
 
             return ResultViewModel.Success();

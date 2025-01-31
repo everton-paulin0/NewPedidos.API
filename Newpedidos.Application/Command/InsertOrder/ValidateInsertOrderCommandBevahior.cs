@@ -13,7 +13,7 @@ namespace Newpedidos.Application.Command.InsertOrder
         }
         public async Task<ResultViewModel<int>> Handle(InsertOrderCommand request, RequestHandlerDelegate<ResultViewModel<int>> next, CancellationToken cancellationToken)
         {
-            var clientName = _context.Orders.Any(o => o.ClientName != "");
+            var clientName = _context.Order.Any(o => o.ClientName != "");
 
             if (!clientName)
             {

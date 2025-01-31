@@ -22,7 +22,7 @@ namespace Newpedidos.Application.Queries.GetAllOrdersQuery
             }
             public async Task<ResultViewModel<List<OrderItemViemModel>>> Handle(GetAllOrdersQuery request, CancellationToken cancellationToken)
             {
-                var orders = await _context.Orders
+                var orders = await _context.Order
                     .Include(p => p.Products)
                     .Where(o => !o.IsDeleted).ToListAsync();
 

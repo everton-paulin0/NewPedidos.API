@@ -14,7 +14,7 @@ namespace Newpedidos.Application.Services
         }
         public ResultViewModel Cancel(int id)
         {
-            var order = _context.Orders.SingleOrDefault(p => p.Id == id);
+            var order = _context.Order.SingleOrDefault(p => p.Id == id);
 
             if (order is null)
             {
@@ -22,7 +22,7 @@ namespace Newpedidos.Application.Services
             }
             order.Cancel();
 
-            _context.Orders.Update(order);
+            _context.Order.Update(order);
             _context.SaveChanges();
 
             return ResultViewModel.Success();
@@ -30,7 +30,7 @@ namespace Newpedidos.Application.Services
 
         public ResultViewModel Complete(int id)
         {
-            var order = _context.Orders.SingleOrDefault(p => p.Id == id);
+            var order = _context.Order.SingleOrDefault(p => p.Id == id);
 
             if (order is null)
             {
@@ -39,7 +39,7 @@ namespace Newpedidos.Application.Services
 
             order.Complete();
 
-            _context.Orders.Update(order);
+            _context.Order.Update(order);
             _context.SaveChanges();
 
             return ResultViewModel.Success();
@@ -47,7 +47,7 @@ namespace Newpedidos.Application.Services
 
         public ResultViewModel Delete(int id)
         {
-            var order = _context.Orders.SingleOrDefault(p => p.Id == id);
+            var order = _context.Order.SingleOrDefault(p => p.Id == id);
 
             if (order is null)
             {
@@ -55,7 +55,7 @@ namespace Newpedidos.Application.Services
             }
 
             order.SetAsDeleted();
-            _context.Orders.Update(order);
+            _context.Order.Update(order);
             _context.SaveChanges();
 
             return ResultViewModel.Success();
@@ -63,7 +63,7 @@ namespace Newpedidos.Application.Services
 
         public ResultViewModel<List<OrderItemViemModel>> GetAll(string search = "")
         {
-            var orders = _context.Orders
+            var orders = _context.Order
                 .Include(p => p.ClientName)
                 .Where(o => !o.IsDeleted && (search == "" || o.ClientName.Contains(search)))
                 .ToList();
@@ -76,7 +76,7 @@ namespace Newpedidos.Application.Services
 
         public ResultViewModel<OrderViewModel> GetById(int id)
         {
-            var order = _context.Orders.SingleOrDefault(p => p.Id == id);
+            var order = _context.Order.SingleOrDefault(p => p.Id == id);
 
             if (order is null)
             {
@@ -92,7 +92,7 @@ namespace Newpedidos.Application.Services
         {
             var order = model.ToEntityOrder();
 
-            _context.Orders.Add(order);
+            _context.Order.Add(order);
             _context.SaveChanges();
 
             return ResultViewModel<int>.Sucess(order.Id);
@@ -100,7 +100,7 @@ namespace Newpedidos.Application.Services
 
         public ResultViewModel SetPaymentPending(int id)
         {
-            var order = _context.Orders.SingleOrDefault(p => p.Id == id);
+            var order = _context.Order.SingleOrDefault(p => p.Id == id);
 
             if (order is null)
             {
@@ -108,7 +108,7 @@ namespace Newpedidos.Application.Services
             }
             order.SetPaymentPending();
 
-            _context.Orders.Update(order);
+            _context.Order.Update(order);
             _context.SaveChanges();
 
             return ResultViewModel.Success();
@@ -116,7 +116,7 @@ namespace Newpedidos.Application.Services
 
         public ResultViewModel Update(UpdateOrderInputModel model)
         {
-            var order = _context.Orders.SingleOrDefault(p => p.Id == model.IdOrder);
+            var order = _context.Order.SingleOrDefault(p => p.Id == model.IdOrder);
 
             if (order is null)
             {
@@ -125,7 +125,7 @@ namespace Newpedidos.Application.Services
 
             order.Update(model.ClientName, model.ClientDoc);
 
-            _context.Orders.Update(order);
+            _context.Order.Update(order);
             _context.SaveChanges();
 
             return ResultViewModel.Success();

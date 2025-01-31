@@ -22,7 +22,7 @@ namespace Newpedidos.Application.Command.InsertProduct
                      
             var product = request.ToEntityProduct();
 
-            await _context.Products.AddAsync(product);
+            await _context.Product.AddAsync(product);
             await _context.SaveChangesAsync();
 
             var orderCreatead = new ProductCreatedNotification(product.Id, product.ProductName, product.Quantity, product.Price, product.IdOrder);

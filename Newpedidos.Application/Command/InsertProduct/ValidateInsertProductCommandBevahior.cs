@@ -15,7 +15,7 @@ namespace Newpedidos.Application.Command.InsertProduct
         }
         public async Task<ResultViewModel<int>> Handle(InsertOrderCommand request, RequestHandlerDelegate<ResultViewModel<int>> next, CancellationToken cancellationToken)
         {
-            var quantities = _context.Products.Any(o => o.Quantity > 0);
+            var quantities = _context.Product.Any(o => o.Quantity > 0);
 
             if (!quantities)
             {

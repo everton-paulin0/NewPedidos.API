@@ -14,7 +14,7 @@ namespace Newpedidos.Application.Command.UpdateOrder
         }
         public async Task<ResultViewModel> Handle(UpdateOrderCommand request, CancellationToken cancellationToken)
         {
-            var order = await _context.Orders.SingleOrDefaultAsync(p => p.Id == request.IdOrder);
+            var order = await _context.Order.SingleOrDefaultAsync(p => p.Id == request.IdOrder);
 
             if (order is null)
             {
@@ -23,7 +23,7 @@ namespace Newpedidos.Application.Command.UpdateOrder
 
             order.Update(request.ClientName, request.ClientDoc);
 
-            _context.Orders.Update(order);
+            _context.Order.Update(order);
             await _context.SaveChangesAsync();
 
             return ResultViewModel.Success();

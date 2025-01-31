@@ -14,7 +14,7 @@ namespace Newpedidos.Application.Command.SetAsPemding
         }
         public async Task<ResultViewModel> Handle(SetAsPendingOrderCommand request, CancellationToken cancellationToken)
         {
-            var order = await _context.Orders.SingleOrDefaultAsync(p => p.Id == request.Id);
+            var order = await _context.Order.SingleOrDefaultAsync(p => p.Id == request.Id);
 
             if (order is null)
             {
@@ -22,7 +22,7 @@ namespace Newpedidos.Application.Command.SetAsPemding
             }
             order.SetPaymentPending();
 
-            _context.Orders.Update(order);
+            _context.Order.Update(order);
             await _context.SaveChangesAsync();
 
             return ResultViewModel.Success();

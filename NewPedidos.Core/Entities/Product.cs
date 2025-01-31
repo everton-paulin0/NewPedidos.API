@@ -13,7 +13,7 @@ namespace NewPedidos.Core.Entities
 
         }
 
-        public Product(string productName, int quantity, double price, int idOrder)
+        public Product(string productName, int quantity, double price, int idOrder):base()
         {
             ProductName = productName;
             Quantity = quantity;

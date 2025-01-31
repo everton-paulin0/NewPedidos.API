@@ -15,7 +15,7 @@ namespace Newpedidos.Application.Queries.GetAllProductQuery
         }
         public async Task<ResultViewModel<List<ProductItemViewModel>>> Handle(GetAllProductQuery request, CancellationToken cancellationToken)
         {
-            var products = await _context.Products
+            var products = await _context.Product
             .Where(o => !o.IsDeleted).ToListAsync();
 
             var model = products.Select(ProductItemViewModel.FromEntityProduct).ToList();

@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newpedidos.Application.Command.DeleteOrder;
 using Newpedidos.Application.Command.InsertProduct;
@@ -11,6 +12,7 @@ using Newpedidos.Application.Services.Interfaces;
 
 namespace NewPedidos.API.Controllers
 {
+    
     [Route("api/[controller]")]
     [ApiController]
     public class ProductController : ControllerBase

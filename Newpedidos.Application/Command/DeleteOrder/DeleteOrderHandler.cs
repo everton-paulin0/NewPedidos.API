@@ -14,7 +14,7 @@ namespace Newpedidos.Application.Command.DeleteOrder
         }
         public async Task<ResultViewModel> Handle(DeleteOrderCommand request, CancellationToken cancellationToken)
         {
-            var order = await _context.Orders.SingleOrDefaultAsync(p => p.Id == request.Id);
+            var order = await _context.Order.SingleOrDefaultAsync(p => p.Id == request.Id);
 
             if (order is null)
             {
@@ -23,7 +23,7 @@ namespace Newpedidos.Application.Command.DeleteOrder
 
             order.SetAsDeleted();
 
-            _context.Orders.Update(order);
+            _context.Order.Update(order);
             await _context.SaveChangesAsync();
 
             return ResultViewModel.Success();

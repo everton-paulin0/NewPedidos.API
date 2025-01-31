@@ -21,7 +21,7 @@ namespace Newpedidos.Application.Command.DeleteProduct
         }
         public async Task<ResultViewModel> Handle(DeleteOrderCommand request, CancellationToken cancellationToken)
         {
-            var product = await _context.Products.SingleOrDefaultAsync(p => p.Id == request.Id);
+            var product = await _context.Product.SingleOrDefaultAsync(p => p.Id == request.Id);
 
             if (product is null)
             {
@@ -30,7 +30,7 @@ namespace Newpedidos.Application.Command.DeleteProduct
 
             product.SetAsDeleted();
 
-            _context.Products.Update(product);
+            _context.Product.Update(product);
             await _context.SaveChangesAsync();
 
             return ResultViewModel.Success();

@@ -19,7 +19,7 @@ namespace Newpedidos.Application.Command.InsertOrder
         {
             var order = request.ToEntityOrder();
 
-            await _context.Orders.AddAsync(order);
+            await _context.Order.AddAsync(order);
             await _context.SaveChangesAsync();
 
             var orderCreatead = new OrderCreatedNotification(order.Id, order.ClientName);
