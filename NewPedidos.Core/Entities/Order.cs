@@ -13,18 +13,22 @@ namespace NewPedidos.Core.Entities
         {
 
         }
-        public Order(string clientDoc, string clientName):base()
+        public Order(string clientDoc, string clientName, int idProduct) : base()
         {
             ClientDoc = clientDoc;
             ClientName = clientName;
             Status = OrderStatus.Started;
+            IdProduct = idProduct;
             Products = [];
+            
         }
 
 
         public string ClientDoc { get; set; }
         public string ClientName { get; set; }
         public OrderStatus Status { get; set; }
+        public int IdProduct { get; set; }
+        public Product Product { get; set; }
         public List<Product> Products { get; set; }
         
 

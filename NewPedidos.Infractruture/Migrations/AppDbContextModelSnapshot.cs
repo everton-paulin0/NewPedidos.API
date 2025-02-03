@@ -45,7 +45,7 @@ namespace NewPedidos.API.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Orders");
+                    b.ToTable("Order");
                 });
 
             modelBuilder.Entity("NewPedidos.Core.Entities.Product", b =>
@@ -102,7 +102,7 @@ namespace NewPedidos.API.Migrations
 
             modelBuilder.Entity("NewPedidos.Core.Entities.Order", b =>
                 {
-                    b.Navigation("Products");
+                    b.Navigation("Product");
                 });
 #pragma warning restore 612, 618
         }

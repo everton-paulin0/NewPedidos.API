@@ -13,9 +13,9 @@ namespace Newpedidos.Application.Command.InsertOrder
         }
         public async Task<ResultViewModel<int>> Handle(InsertOrderCommand request, RequestHandlerDelegate<ResultViewModel<int>> next, CancellationToken cancellationToken)
         {
-            var clientName = _context.Order.Any(o => o.ClientName != "");
+            var clientName = _context.Order.Any(o => o.ClientName == "");
 
-            if (!clientName)
+            if (clientName is true )
             {
                 return ResultViewModel<int>.Error("O Nome do Cliente deve ser preenchido");
             }

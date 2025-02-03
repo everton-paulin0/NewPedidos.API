@@ -6,8 +6,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+//builder.Services.AddDbContext<AppDbContext>(o => o.UseInMemoryDatabase("NewPedidoDb"));
 
-builder.Services.AddDbContext<AppDbContext>();
+
+
+//builder.Services.AddDbContext<AppDbContext>();
 
 builder.Services.AddApplication();
 builder.Services.AddControllers();

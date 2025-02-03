@@ -28,6 +28,7 @@ namespace NewPedidos.Core.Entities
         public double TotalCost { get; set; }
         public int IdOrder { get; set; }
         public Order Order { get; set; }
+        public List<Order> OwnedOrders { get; private set; }
 
         public void UpdateProduct(string productName, int quantity, double price, int idOrder)
         {
