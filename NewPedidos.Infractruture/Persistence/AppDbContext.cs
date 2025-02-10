@@ -7,7 +7,7 @@ namespace NewPedidos.Infractruture.Persistence
    
     public class AppDbContext: DbContext
     {
-        /*
+        
         public AppDbContext()
         {
             
@@ -17,8 +17,8 @@ namespace NewPedidos.Infractruture.Persistence
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         => optionsBuilder.UseSqlite(connectionString: "DataSource=app.db;Cache=Shared");
-        */
 
+        /*
         public AppDbContext(DbContextOptions<AppDbContext> options)
             : base(options)
         {
@@ -28,7 +28,7 @@ namespace NewPedidos.Infractruture.Persistence
         public DbSet<Order> Order { get; set; }
         public DbSet<Product> Product { get; set; }
 
-
+        
         protected override void OnModelCreating(ModelBuilder builder)
         {
                  
@@ -59,8 +59,11 @@ namespace NewPedidos.Infractruture.Persistence
                     
                 });
 
-            base.OnModelCreating(builder);
-        }
+            base.OnModelCreating(builder); 
+        
+    }
+        */
+
     }
 
 }
