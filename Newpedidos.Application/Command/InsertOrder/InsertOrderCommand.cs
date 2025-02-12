@@ -9,6 +9,7 @@ namespace Newpedidos.Application.Command.InsertOrder
         public string ClientDoc { get; set; }
         public string ClientName { get; set; }
         
+        
 
 
         public Order ToEntityOrder()
