@@ -25,7 +25,7 @@ namespace Newpedidos.Application.Command.InsertProduct
             await _context.Product.AddAsync(product);
             await _context.SaveChangesAsync();
 
-            var orderCreatead = new ProductCreatedNotification(product.Id, product.ProductName, product.Quantity, product.Price, product.IdOrder);
+            var orderCreatead = new ProductCreatedNotification(product.Id, product.ProductName, product.Quantity, product.Price);
 
             await _mediator.Publish(orderCreatead);
 

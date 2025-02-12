@@ -8,10 +8,10 @@ namespace Newpedidos.Application.Command.InsertOrder
     {
         public string ClientDoc { get; set; }
         public string ClientName { get; set; }
-        public int IdProduct { get; set; }
+        
 
 
         public Order ToEntityOrder()
-            => new Order(ClientDoc, ClientName, IdProduct);
+            => new Order(ClientDoc, ClientName);
     }
 }

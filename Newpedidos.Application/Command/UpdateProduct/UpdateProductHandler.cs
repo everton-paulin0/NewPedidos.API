@@ -21,7 +21,7 @@ namespace Newpedidos.Application.Command.UpdateProduct
                 return ResultViewModel<OrderViewModel>.Error("Pedido não existe");
             }
 
-            product.UpdateProduct(request.ProductName, request.Quantity, request.Price, request.IdProduct);
+            product.UpdateProduct(request.ProductName, request.Quantity, request.Price);
 
             _context.Product.Update(product);
             await _context.SaveChangesAsync();

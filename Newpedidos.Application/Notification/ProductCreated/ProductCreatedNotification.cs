@@ -9,19 +9,18 @@ namespace Newpedidos.Application.Notification.ProductCreated
 {
     public class ProductCreatedNotification : INotification
     {
-        public ProductCreatedNotification(int id, string productName, int quantity, double price, int idOrder)
+        public ProductCreatedNotification(int id, string productName, int quantity, double price)
         {
             Id = id;
             ProductName = productName;
             Quantity = quantity;
-            Price = price;
-            IdOrder = idOrder;
+            Price = price;            
         }
 
         public int Id { get; set; }
         public string ProductName { get; set; }
         public int Quantity { get; set; }
         public double Price { get; set; }
-        public int IdOrder { get; set; }
+        
     }
 }

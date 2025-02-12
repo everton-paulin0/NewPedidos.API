@@ -11,6 +11,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 //builder.Services.AddDbContext<AppDbContext>(o => o.UseInMemoryDatabase("NewPedidoDb"));
 
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlite("Data Source=app.db"));
+
 
 builder.Services.AddScoped<IOrderServices, OrderServices>();
 builder.Services.AddScoped<IProductServices, ProductServices>();

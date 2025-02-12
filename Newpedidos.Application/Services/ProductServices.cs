@@ -70,7 +70,7 @@ namespace Newpedidos.Application.Services
             {
                 return ResultViewModel<OrderViewModel>.Error("Pedido não existe");
             }
-            product.UpdateProduct(model.ProductName, model.Quantity, model.Price, model.IdProduct);
+            product.UpdateProduct(model.ProductName, model.Quantity, model.Price);
             _context.Product.Update(product);
             _context.SaveChanges();
 

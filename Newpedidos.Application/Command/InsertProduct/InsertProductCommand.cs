@@ -10,9 +10,10 @@ namespace Newpedidos.Application.Command.InsertProduct
         public string ProductName { get; set; }
         public int Quantity { get; set; }
         public double Price { get; set; }
-        public int IdOrder { get; set; }
+        public int OrderId { get; set; }
+
 
         public Product ToEntityProduct()
-            => new Product(ProductName, Quantity, Price, IdOrder);
+            => new Product(ProductName, Quantity, Price, OrderId);
     }
 }

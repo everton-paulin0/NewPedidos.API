@@ -15,9 +15,10 @@ namespace Newpedidos.Application.Model
         public int Quantity { get; set; }
         public double Price { get; set; }
         public double TotalCost { get; set; }
-        public int IdOrder { get; set; }
+        public int OrderId { get; set; }
+
 
         public Product ToEntityProduct()
-            => new Product(ProductName, Quantity, Price, IdOrder);
+            => new Product(ProductName, Quantity, Price, OrderId);
     }
 }

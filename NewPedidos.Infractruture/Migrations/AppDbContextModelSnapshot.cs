@@ -7,7 +7,7 @@ using NewPedidos.Infractruture.Persistence;
 
 #nullable disable
 
-namespace NewPedidos.API.Migrations
+namespace NewPedidos.Infractruture.Migrations
 {
     [DbContext(typeof(AppDbContext))]
     partial class AppDbContextModelSnapshot : ModelSnapshot
@@ -57,9 +57,6 @@ namespace NewPedidos.API.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("IdOrder")
-                        .HasColumnType("INTEGER");
-
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("INTEGER");
 
@@ -86,7 +83,7 @@ namespace NewPedidos.API.Migrations
 
                     b.HasIndex("OrderId");
 
-                    b.ToTable("Products");
+                    b.ToTable("Product");
                 });
 
             modelBuilder.Entity("NewPedidos.Core.Entities.Product", b =>
@@ -102,7 +99,7 @@ namespace NewPedidos.API.Migrations
 
             modelBuilder.Entity("NewPedidos.Core.Entities.Order", b =>
                 {
-                    b.Navigation("Product");
+                    b.Navigation("Products");
                 });
 #pragma warning restore 612, 618
         }

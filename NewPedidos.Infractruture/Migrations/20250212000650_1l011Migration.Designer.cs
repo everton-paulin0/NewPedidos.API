@@ -8,11 +8,11 @@ using NewPedidos.Infractruture.Persistence;
 
 #nullable disable
 
-namespace NewPedidos.API.Migrations
+namespace NewPedidos.Infractruture.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250131145510_1Migration")]
-    partial class _1Migration
+    [Migration("20250212000650_1l011Migration")]
+    partial class _1l011Migration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -48,7 +48,7 @@ namespace NewPedidos.API.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Orders");
+                    b.ToTable("Order");
                 });
 
             modelBuilder.Entity("NewPedidos.Core.Entities.Product", b =>
@@ -59,9 +59,6 @@ namespace NewPedidos.API.Migrations
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("TEXT");
-
-                    b.Property<int>("IdOrder")
-                        .HasColumnType("INTEGER");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("INTEGER");
@@ -89,7 +86,7 @@ namespace NewPedidos.API.Migrations
 
                     b.HasIndex("OrderId");
 
-                    b.ToTable("Products");
+                    b.ToTable("Product");
                 });
 
             modelBuilder.Entity("NewPedidos.Core.Entities.Product", b =>
