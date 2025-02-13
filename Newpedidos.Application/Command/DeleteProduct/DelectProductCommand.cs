@@ -10,5 +10,11 @@ namespace Newpedidos.Application.Command.DeleteProduct
 {
     public class DelectProductCommand : IRequest<ResultViewModel>
     {
+        public DelectProductCommand(int id)
+        {
+            Id = id;
+        }
+
+        public int Id { get; set; }
     }
 }

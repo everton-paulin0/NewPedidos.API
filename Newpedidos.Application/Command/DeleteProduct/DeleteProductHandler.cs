@@ -12,20 +12,20 @@ using NewPedidos.Infractruture.Persistence;
 
 namespace Newpedidos.Application.Command.DeleteProduct
 {
-    public class DeleteProductHandler : IRequestHandler<DeleteOrderCommand, ResultViewModel>
+    public class DeleteProductHandler : IRequestHandler<DelectProductCommand, ResultViewModel>
     {
         private readonly AppDbContext _context;
         public DeleteProductHandler(AppDbContext context)
         {
             _context = context;
         }
-        public async Task<ResultViewModel> Handle(DeleteOrderCommand request, CancellationToken cancellationToken)
+        public async Task<ResultViewModel> Handle(DelectProductCommand request, CancellationToken cancellationToken)
         {
             var product = await _context.Product.SingleOrDefaultAsync(p => p.Id == request.Id);
 
             if (product is null)
             {
-                return ResultViewModel<OrderViewModel>.Error("Pedido não existe");
+                return ResultViewModel<ProductViewModel>.Error("Pedido não existe");
             }
 
             product.SetAsDeleted();
