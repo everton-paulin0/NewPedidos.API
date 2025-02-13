@@ -49,7 +49,7 @@ namespace Newpedidos.Application.Services
 
             var model = ProductViewModel.FromEntityProduct(product);
 
-            return ResultViewModel<ProductViewModel>.Sucess(model); ;
+            return ResultViewModel<ProductViewModel>.Sucess(model); 
         }
 
         public ResultViewModel<int> Insert(CreateProductInputModel model)
