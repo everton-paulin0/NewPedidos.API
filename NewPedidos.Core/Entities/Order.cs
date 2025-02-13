@@ -18,8 +18,7 @@ namespace NewPedidos.Core.Entities
             ClientDoc = clientDoc;
             ClientName = clientName;
             Status = OrderStatus.Started;            
-            Products = [];
-            
+            Products = [];            
         }
 
 
@@ -53,8 +52,6 @@ namespace NewPedidos.Core.Entities
                 UpdatedAt = DateTime.Now;
             }
         }
-
-
 
         public void SetPaymentPending()
         {

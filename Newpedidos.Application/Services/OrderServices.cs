@@ -123,7 +123,7 @@ namespace Newpedidos.Application.Services
                 return ResultViewModel<OrderViewModel>.Error("Pedido não existe");
             }
 
-            order.Update(model.ClientName, model.ClientDoc);
+            order.Update(model.ClientDoc, model.ClientName);
 
             _context.Order.Update(order);
             _context.SaveChanges();
