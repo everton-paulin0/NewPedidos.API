@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 using NewPedidos.Core.Enum;
 
 namespace NewPedidos.Core.Entities
@@ -13,25 +9,58 @@ namespace NewPedidos.Core.Entities
         {
 
         }
-        public Order(string clientDoc, string clientName) : base()
+        
+        public Order(string clientDoc, string clientName, DocumentType documentType, string emailAddress, string address, int numberAddress, string neighborhood, string city, States state, int postalCode)
         {
             ClientDoc = clientDoc;
             ClientName = clientName;
-            Status = OrderStatus.Started;            
-            Products = [];            
+            DocumentType = documentType;
+            EmailAddress = emailAddress;
+            Address = address;
+            NumberAddress = numberAddress;
+            Neighborhood = neighborhood;
+            City = city;
+            PostalCode = postalCode;
+            Status = OrderStatus.Started;
+            Products = [];
         }
-
-
+        [Description("Numero de Documento")]
         public string ClientDoc { get; set; }
+        [Description("Nome Completo / Razão Scial")]
         public string ClientName { get; set; }
-        public OrderStatus Status { get; set; }        
+        [Description("CPF / CNPJ")]
+        public DocumentType DocumentType { get; set; }
+        [Description("Email")]
+        public string EmailAddress { get; set; }
+        [Description("Endereço")]
+        public string Address { get; set; }
+        [Description("Número")] 
+        public int NumberAddress { get; set; }
+        [Description("Bairro")]
+        public string Neighborhood { get; set; }
+        [Description("Cidade")]
+        public string City { get; set; }
+        [Description("Estado")]
+        public States State { get; set; }
+        [Description("CEP")]
+        public int PostalCode { get; set; }
+        [Description("Status")]
+        public OrderStatus Status { get; set; }
+        [Description("Produtos")]
         public List<Product> Products { get; set; }
         
 
-        public void Update(string clientdoc, string clientName)
+        public void Update(string clientDoc, string clientName, string emailAddress, string address, int numberAddress, string neighborhood, string city, States state, int postalCode)
         {
-            ClientDoc = clientdoc;
+            ClientDoc = clientDoc;
             ClientName = clientName;
+            EmailAddress = emailAddress;
+            Address = address;
+            NumberAddress = numberAddress;
+            Neighborhood = neighborhood;
+            City = city;
+            State = state;
+            PostalCode = postalCode;
             UpdatedAt = DateTime.Now;
         }
 

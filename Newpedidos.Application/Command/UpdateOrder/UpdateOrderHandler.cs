@@ -21,7 +21,7 @@ namespace Newpedidos.Application.Command.UpdateOrder
                 return ResultViewModel<OrderViewModel>.Error("Pedido não existe");
             }
 
-            order.Update(request.ClientDoc, request.ClientName);
+            order.Update(request.ClientDoc, request.ClientName, request.EmailAddress,request.Address, request.NumberAddress,request.Neighborhood, request.City, request.State, request.PostalCode);
 
             _context.Order.Update(order);
             await _context.SaveChangesAsync();
