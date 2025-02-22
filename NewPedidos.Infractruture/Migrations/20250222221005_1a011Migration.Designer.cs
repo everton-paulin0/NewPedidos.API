@@ -11,8 +11,8 @@ using NewPedidos.Infractruture.Persistence;
 namespace NewPedidos.Infractruture.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250220210759_1p011Migration")]
-    partial class _1p011Migration
+    [Migration("20250222221005_1a011Migration")]
+    partial class _1a011Migration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -74,7 +74,12 @@ namespace NewPedidos.Infractruture.Migrations
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("TEXT");
 
+                    b.Property<int?>("UserId")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Order");
                 });
@@ -117,6 +122,51 @@ namespace NewPedidos.Infractruture.Migrations
                     b.ToTable("Product");
                 });
 
+            modelBuilder.Entity("NewPedidos.Core.Entities.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("Active")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("UserEmail")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("UserLevel")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("NewPedidos.Core.Entities.Order", b =>
+                {
+                    b.HasOne("NewPedidos.Core.Entities.User", null)
+                        .WithMany("OwnedOrder")
+                        .HasForeignKey("UserId");
+                });
+
             modelBuilder.Entity("NewPedidos.Core.Entities.Product", b =>
                 {
                     b.HasOne("NewPedidos.Core.Entities.Order", "Order")
@@ -131,6 +181,11 @@ namespace NewPedidos.Infractruture.Migrations
             modelBuilder.Entity("NewPedidos.Core.Entities.Order", b =>
                 {
                     b.Navigation("Products");
+                });
+
+            modelBuilder.Entity("NewPedidos.Core.Entities.User", b =>
+                {
+                    b.Navigation("OwnedOrder");
                 });
 #pragma warning restore 612, 618
         }

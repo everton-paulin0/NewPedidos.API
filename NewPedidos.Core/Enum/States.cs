@@ -10,58 +10,58 @@ namespace NewPedidos.Core.Enum
     public enum States
     {
         [Description("Acre")]
-        AC = 1,
+        AC,
         [Description("Alagoas")]
-        AL = 2,
+        AL,
         [Description("Amapá")]
-        AP = 3,
+        AP,
         [Description("Amazonas")]
-        AM = 4,
+        AM,
         [Description("Bahia")]
-        BA = 5,
+        BA,
         [Description("Ceara")]
-        CE = 6,
+        CE,
         [Description("Destrito Federal")]
-        DF = 7,
+        DF,
         [Description("Espírito Santo")]
-        ES = 8,
+        ES,
         [Description("Goiás")]
-        GO = 9,
+        GO,
         [Description("Maranhão")]
-        MA = 10,
+        MA,
         [Description("Mato Grosso")]
-        MT = 11,
+        MT,
         [Description("Mato Grosso do Sul")]
-        MS = 12,
+        MS,
         [Description("Minas Gerais")]
-        MG = 13,
+        MG,
         [Description("Pará")]
-        PA = 14,
+        PA,
         [Description("Paraíba")]
-        PB = 15,
+        PB,
         [Description("Paraná")]
-        PR = 16,
+        PR,
         [Description("Pernambuco")]
-        PE = 17,
+        PE,
         [Description("Piauí")]
-        PI = 18,
+        PI,
         [Description("Rio de Janeiro")]
-        RJ = 19,
+        RJ,
         [Description("Rio Grande do Norte")]
-        RN = 20,
+        RN,
         [Description("Rio Grande do Sul")]
-        RS = 21,
+        RS,
         [Description("Rondônia")]
-        RO = 22,
+        RO,
         [Description("Roraima")]
-        RR = 23,
+        RR,
         [Description("Santa Catarina")]
-        SC = 24,
+        SC,
         [Description("São Paulo")]
-        SP = 25,
+        SP,
         [Description("Sergipe")]
-        SE = 26,
+        SE,
         [Description("Tocantins")]
-        TO = 27
+        TO
     }
 }

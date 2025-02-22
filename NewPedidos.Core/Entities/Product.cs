@@ -35,6 +35,7 @@ namespace NewPedidos.Core.Entities
             ProductName = productName;
             Quantity = quantity;
             Price = price;
+            TotalCost = (quantity * price);
             UpdatedAt = DateTime.Now;
         }
     }

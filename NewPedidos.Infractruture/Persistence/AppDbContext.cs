@@ -15,6 +15,7 @@ namespace NewPedidos.Infractruture.Persistence
         }
         public DbSet<Order> Order { get; set; }
         public DbSet<Product> Product { get; set; }
+        public DbSet<User> Users { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         => optionsBuilder.UseSqlite(connectionString: "DataSource=app.db;Cache=Shared");

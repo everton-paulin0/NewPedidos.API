@@ -10,7 +10,7 @@ namespace NewPedidos.Core.Entities
 
         }
         
-        public Order(string clientDoc, string clientName, DocumentType documentType, string emailAddress, string address, int numberAddress, string neighborhood, string city, States state, int postalCode)
+        public Order(string clientDoc, string clientName, DocumentType documentType, string emailAddress, string address, int numberAddress, string neighborhood, string city, States state, int postalCode, int userId)
         {
             ClientDoc = clientDoc;
             ClientName = clientName;
@@ -20,9 +20,12 @@ namespace NewPedidos.Core.Entities
             NumberAddress = numberAddress;
             Neighborhood = neighborhood;
             City = city;
+            State = state;
             PostalCode = postalCode;
+            UserId = userId;
             Status = OrderStatus.Started;
             Products = [];
+            
         }
         [Description("Numero de Documento")]
         public string ClientDoc { get; set; }
@@ -44,11 +47,14 @@ namespace NewPedidos.Core.Entities
         public States State { get; set; }
         [Description("CEP")]
         public int PostalCode { get; set; }
+        public int UserId { get; set; }
+        public User User { get; set; }
         [Description("Status")]
         public OrderStatus Status { get; set; }
         [Description("Produtos")]
         public List<Product> Products { get; set; }
         
+
 
         public void Update(string clientDoc, string clientName, string emailAddress, string address, int numberAddress, string neighborhood, string city, States state, int postalCode)
         {

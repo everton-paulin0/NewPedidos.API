@@ -1,11 +1,12 @@
-﻿using NewPedidos.Core.Entities;
+﻿using System.Data.Entity;
+using NewPedidos.Core.Entities;
 using NewPedidos.Core.Enum;
 
 namespace Newpedidos.Application.Model
 {
     public class OrderViewModel
     {
-        public OrderViewModel(int id, string clientDoc, string clientName, string emailAddress, string address, int numberAddress, string neighborhood, string city, States state, int postalCode, List<Product> products)
+        public OrderViewModel(int id, string clientDoc, string clientName, string emailAddress, string address, int numberAddress, string neighborhood, string city, string state, int postalCode,int userId, List<Product> products)
         {
             Id = id;
             ClientDoc = clientDoc;
@@ -15,10 +16,12 @@ namespace Newpedidos.Application.Model
             NumberAddress = numberAddress;
             Neighborhood = neighborhood;
             City = city;
-            State = state;
+            State = state.ToString();
             PostalCode = postalCode;
+            UserId = userId;
             Products = products.Select(c => $"{c.ProductName} - {c.Quantity} - {c.Price}").ToList();
-            Total= products.Sum(c=> c.Price);
+            
+            Total = products.Sum(c=> c.TotalCost);
         }
 
         public int Id { get; set; }        
@@ -29,13 +32,14 @@ namespace Newpedidos.Application.Model
         public int NumberAddress { get; set; }
         public string Neighborhood { get; set; }
         public string City { get; set; }
-        public States State { get; set; }
+        public string State { get; set; }
         public int PostalCode { get; set; }
+        public int UserId { get; set; }
         public List<string> Products { get; private set; }
         public double Total { get; set; }
 
 
         public static OrderViewModel FromEntityOrder(Order entity)
-            => new OrderViewModel(entity.Id, entity.ClientDoc, entity.ClientName, entity.EmailAddress, entity.Address, entity.NumberAddress, entity.Neighborhood, entity.City,entity.State, entity.PostalCode, entity.Products);
+            => new OrderViewModel(entity.Id, entity.ClientDoc, entity.ClientName, entity.EmailAddress, entity.Address, entity.NumberAddress, entity.Neighborhood, entity.City,entity.State.ToString(), entity.PostalCode, entity.UserId, entity.Products);
     }
 }

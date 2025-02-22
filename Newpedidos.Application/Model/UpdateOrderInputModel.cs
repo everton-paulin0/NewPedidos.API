@@ -19,5 +19,6 @@ namespace Newpedidos.Application.Model
         public string City { get; set; }
         public States State { get; set; }
         public int PostalCode { get; set; }
+        public double Total { get; set; }
     }
 }
