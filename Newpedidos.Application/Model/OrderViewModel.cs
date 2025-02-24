@@ -1,6 +1,4 @@
-﻿using System.Data.Entity;
-using NewPedidos.Core.Entities;
-using NewPedidos.Core.Enum;
+﻿using NewPedidos.Core.Entities;
 
 namespace Newpedidos.Application.Model
 {

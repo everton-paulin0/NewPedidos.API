@@ -18,8 +18,9 @@ namespace Newpedidos.Application.Command.InsertOrder
         public string City { get; set; }        
         public States State { get; set; }        
         public int PostalCode { get; set; }
+        public int UserId { get; set; }
 
         public Order ToEntityOrder()
-            => new Order(ClientDoc, ClientName, DocumentType, EmailAddress, Address, NumberAddress, Neighborhood, City, State, PostalCode);
+            => new Order(ClientDoc, ClientName, DocumentType, EmailAddress, Address, NumberAddress, Neighborhood, City, State, PostalCode, UserId);
     }
 }

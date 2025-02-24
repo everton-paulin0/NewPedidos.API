@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NewPedidos.Core.Entities;
-using NewPedidos.Core.Enum;
+﻿using NewPedidos.Core.Entities;
 
 namespace Newpedidos.Application.Model
 {
@@ -46,7 +40,8 @@ namespace Newpedidos.Application.Model
         public double Total { get; set; }
 
 
+
         public static OrderItemViemModel FromEntityOrder(Order order)
-            => new(order.Id, order.ClientDoc, order.ClientName,order.DocumentType.ToString(), order.EmailAddress, order.Address, order.NumberAddress, order.Neighborhood, order.City, order.State.ToString(), order.PostalCode, order.UserId, order.Status.ToString(), order.Products);
+            => new(order.Id, order.ClientDoc, order.ClientName, order.DocumentType.ToString(), order.EmailAddress, order.Address, order.NumberAddress, order.Neighborhood, order.City, order.State.ToString(), order.PostalCode, order.UserId, order.Status.ToString(), order.Products);
     }
 }
