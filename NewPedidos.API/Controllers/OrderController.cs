@@ -1,18 +1,14 @@
 ﻿using MediatR;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newpedidos.Application.Command.CancelOrder;
 using Newpedidos.Application.Command.CompleteOrder;
 using Newpedidos.Application.Command.DeleteOrder;
 using Newpedidos.Application.Command.InsertOrder;
-using Newpedidos.Application.Command.InsertProduct;
 using Newpedidos.Application.Command.SetAsPemding;
 using Newpedidos.Application.Command.UpdateOrder;
 using Newpedidos.Application.Queries.GetAllOrdersQuery;
 using Newpedidos.Application.Queries.GetOrderByIdQuery;
 using Newpedidos.Application.Services.Interfaces;
-using NewPedidos.Infractruture.Persistence;
 
 namespace NewPedidos.API.Controllers
 {

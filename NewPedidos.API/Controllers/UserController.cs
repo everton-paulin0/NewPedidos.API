@@ -1,29 +1,28 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Newpedidos.Application.Command.DeleteProduct;
-using Newpedidos.Application.Command.InsertProduct;
-using Newpedidos.Application.Command.UpdateProduct;
-using Newpedidos.Application.Queries.GetAllProductQuery;
-using Newpedidos.Application.Queries.GetProductByQuery;
+using Newpedidos.Application.Command.DeleteUser;
+using Newpedidos.Application.Command.InsertUser;
+using Newpedidos.Application.Command.UpdateUser;
+using Newpedidos.Application.Queries.GetAllUsersQuery;
+using Newpedidos.Application.Queries.GetOrderByIdQuery;
 using Newpedidos.Application.Services.Interfaces;
 
 namespace NewPedidos.API.Controllers
 {
-    
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductController : ControllerBase
+    public class UserController : ControllerBase
     {
-        private readonly IProductServices _service;
+        private readonly IUserServices _service;
         private readonly IMediator _mediator;
-        public ProductController(IProductServices service, IMediator mediator)
+        public UserController(IUserServices service, IMediator mediator)
         {
             _service = service;
             _mediator = mediator;
         }
 
         [HttpPost]
-        public async Task<IActionResult> PostProduct(InsertProductCommand command)
+        public async Task<IActionResult> PostProduct(InsertUserCommand command)
         {
             var result = await _mediator.Send(command);
 
@@ -38,7 +37,7 @@ namespace NewPedidos.API.Controllers
         [HttpGet]
         public async Task<IActionResult> Get(string search = "")
         {
-            var query = new GetAllProductQuery();
+            var query = new GetAllUsersQuery();
 
             var result = await _mediator.Send(query);
 
@@ -48,7 +47,7 @@ namespace NewPedidos.API.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
-            var result = await _mediator.Send(new GetProductByQuery(id));
+            var result = await _mediator.Send(new GetOrderByIdQuery(id));
 
             if (!result.IsSucess)
             {
@@ -57,8 +56,9 @@ namespace NewPedidos.API.Controllers
 
             return Ok(result);
         }
+
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id, UpdateProductCommand command)
+        public async Task<IActionResult> Put(int id, UpdateUserCommand command)
         {
             var result = await _mediator.Send(command);
 
@@ -73,7 +73,7 @@ namespace NewPedidos.API.Controllers
         [HttpDelete]
         public async Task<IActionResult> Delete(int id)
         {
-            var result = await _mediator.Send(new DelectProductCommand(id));
+            var result = await _mediator.Send(new DeleteUserCommand(id));
 
             if (!result.IsSucess)
             {
