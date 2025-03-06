@@ -1,29 +1,40 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newpedidos.Application.Command.DeleteUser;
 using Newpedidos.Application.Command.InsertUser;
 using Newpedidos.Application.Command.UpdateUser;
+using Newpedidos.Application.Model;
 using Newpedidos.Application.Queries.GetAllUsersQuery;
 using Newpedidos.Application.Queries.GetOrderByIdQuery;
 using Newpedidos.Application.Services.Interfaces;
+using NewPedidos.Infractruture.Auth;
 
 namespace NewPedidos.API.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/[controller]")]
+    [Authorize]
+    
     public class UserController : ControllerBase
     {
         private readonly IUserServices _service;
         private readonly IMediator _mediator;
-        public UserController(IUserServices service, IMediator mediator)
+        private readonly IAuthService _authService;
+
+        public UserController(IUserServices service, IMediator mediator, IAuthService authService)
         {
             _service = service;
             _mediator = mediator;
+            _authService = authService;
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public async Task<IActionResult> PostProduct(InsertUserCommand command)
         {
+            var hash = _authService.ComputerHash(command.Password);
+
             var result = await _mediator.Send(command);
 
             if (!result.IsSucess)
@@ -82,5 +93,7 @@ namespace NewPedidos.API.Controllers
 
             return NoContent();
         }
+
+        
     }
 }

@@ -32,5 +32,23 @@ namespace NewPedidos.Core.Entities
             Password = password;
             UpdatedAt = DateTime.Now;
         }
+
+        public void Administrator()
+        {
+            if (UserLevel != Level.Editor && UserLevel != Level.Reader)
+            {
+                UserLevel = Level.Administrator;
+                UpdatedAt = DateTime.Now;
+            }
+        }
+
+        public void Reader()
+        {
+            if (UserLevel != Level.Editor && UserLevel != Level.Administrator)
+            {
+                UserLevel = Level.Reader;
+                UpdatedAt = DateTime.Now;
+            }
+        }
     }
 }
