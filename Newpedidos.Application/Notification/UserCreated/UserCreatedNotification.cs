@@ -10,7 +10,7 @@ namespace Newpedidos.Application.Notification.UserCreated
 {
     public class UserCreatedNotification : INotification
     {
-        public UserCreatedNotification(int id, string userName, string userEmail, Level userLevel, string password)
+        public UserCreatedNotification(int id, string userName, string userEmail, string userLevel, string password)
         {
             Id = id;
             UserName = userName;
@@ -22,7 +22,7 @@ namespace Newpedidos.Application.Notification.UserCreated
         public int Id { get; set; }
         public string UserName { get; set; }
         public string UserEmail { get; set; }
-        public Level UserLevel { get; set; }
+        public string UserLevel { get; set; }
         public string Password { get; set; }
     }
 }

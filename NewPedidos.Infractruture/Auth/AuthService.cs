@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
-using System.Runtime.Intrinsics.Arm;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using NewPedidos.Core.Enum;
@@ -50,7 +47,7 @@ namespace NewPedidos.Infractruture.Auth
             var claims = new List<Claim>()
             {
                 new Claim ("userEmail", userEmail),
-                new Claim(ClaimTypes.Role,userLevel)
+                new Claim (ClaimTypes.Role, userLevel)
             };
 
             var token = new JwtSecurityToken(issuer, audience, claims, null, DateTime.Now.AddHours(2), credentials);
@@ -58,6 +55,5 @@ namespace NewPedidos.Infractruture.Auth
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
 
-        
     }
 }

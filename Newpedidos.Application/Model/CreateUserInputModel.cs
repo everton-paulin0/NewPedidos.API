@@ -10,11 +10,11 @@ namespace Newpedidos.Application.Model
         [Required]
         public string UserName { get; set; }
         public string UserEmail { get; set; }
-        public Level UserLevel { get; set; }
+        public string UserLevel { get; set; }
         public string Password { get; set; }
 
         public User ToEntityUser()
-            => new User(UserName, UserEmail, Password);
+            => new User(UserName, UserEmail, UserLevel, Password);
 
     }
 

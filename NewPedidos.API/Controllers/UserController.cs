@@ -44,7 +44,7 @@ namespace NewPedidos.API.Controllers
         {
             var hash = _authService.ComputerHash(command.Password);
 
-            var user = new User(command.UserName, command.UserEmail, hash);
+            var user = new User (command.UserName, command.UserEmail, command.UserLevel, hash);
            
             _context.Users.Add(user);
             _context.SaveChanges();
@@ -127,7 +127,7 @@ namespace NewPedidos.API.Controllers
             return NoContent();
         }
 
-        /*
+        
 
         [HttpPut("Login")]
         [AllowAnonymous]
@@ -139,7 +139,7 @@ namespace NewPedidos.API.Controllers
 
             if (user is null)
             {
-                var error = ResultViewModel<LoginInputModel?>.Error("Erro de Login");
+                var error = ResultViewModel<LoginViewModel?>.Error("Erro de Login");
 
                 return BadRequest(error);
             }
@@ -147,11 +147,11 @@ namespace NewPedidos.API.Controllers
 
             var viewModel = new LoginViewModel(token);
 
-            var result = ResultViewModel<LoginViewModel>.Success(viewModel);
+            var result = ResultViewModel<LoginViewModel>.Success();
 
             return Ok(result);
         }
         
-        */
+        
     }
 }

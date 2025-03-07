@@ -9,11 +9,11 @@ namespace Newpedidos.Application.Command.InsertUser
     {
         public string Username { get; set; }
         public string UserEmail { get; set; }
-        public Level UserLevel { get; set; }
+        public string UserLevel { get; set; }
         public bool Active { get; set; }
         public string Password { get; set; }
 
         public User ToEntityUser()
-            => new User(Username, UserEmail, Password);
+            => new User(Username, UserEmail, UserLevel, Password);
     }
 }

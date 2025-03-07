@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Newpedidos.Application.Command.InsertOrder;
 using Newpedidos.Application.Command.InsertProduct;
+using Newpedidos.Application.Command.InsertUser;
 using Newpedidos.Application.Model;
 using Newpedidos.Application.Services;
 using Newpedidos.Application.Services.Interfaces;
@@ -57,6 +58,7 @@ namespace Newpedidos.Application
             services
                 .AddFluentValidationAutoValidation()
                 .AddValidatorsFromAssemblyContaining<InsertOrderCommand>()
+                .AddValidatorsFromAssemblyContaining<InsertUserCommand>()
                 .AddValidatorsFromAssemblyContaining<InsertProductCommand>();
 
             return services;
