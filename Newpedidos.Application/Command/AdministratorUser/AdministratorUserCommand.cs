@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 using MediatR;
 using Newpedidos.Application.Model;
 
-namespace Newpedidos.Application.Command.CancelOrder
+namespace Newpedidos.Application.Command.AdministratorUser
 {
-    public class CancelOrderCommand : IRequest<ResultViewModel>
+    public class AdministratorUserCommand : IRequest<ResultViewModel>
     {
-        public CancelOrderCommand(int id)
+        public AdministratorUserCommand(int id)
         {
             Id = id;
         }

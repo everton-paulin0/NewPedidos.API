@@ -1,5 +1,7 @@
 ﻿
 
+using Newpedidos.Application.Model;
+
 namespace Newpedidos.Application.Model
 {
     public class ResultViewModel
@@ -34,3 +36,4 @@ namespace Newpedidos.Application.Model
             => new(default, false, message);
     }
 }
+
