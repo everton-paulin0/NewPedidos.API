@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newpedidos.Application.Command.CancelOrder;
 using Newpedidos.Application.Command.CompleteOrder;
@@ -40,6 +41,7 @@ namespace NewPedidos.API.Controllers
         }
 
         [HttpGet]
+        
         public async Task<IActionResult> Get(string search = "")
         {
             var query = new GetAllOrdersQuery();
@@ -50,6 +52,7 @@ namespace NewPedidos.API.Controllers
         }
 
         [HttpGet("{id}")]
+        
         public async Task<IActionResult> GetById(int id)
         {
             var result = await _mediator.Send(new GetOrderByIdQuery(id));

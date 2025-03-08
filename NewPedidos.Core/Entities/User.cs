@@ -37,11 +37,13 @@ namespace NewPedidos.Core.Entities
 
         public void Administrator()
         {
+            UserLevel = "Administrator";
             UpdatedAt = DateTime.Now;
         }
 
         public void Reader()
         {
+            UserLevel = "Reader";
             UpdatedAt = DateTime.Now;
         }
         

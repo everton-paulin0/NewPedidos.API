@@ -35,7 +35,7 @@ namespace Newpedidos.Application.Services
 
             var model = products.Select(UserItemViewModel.FromEntityUser).ToList();
 
-            return ResultViewModel<List<UserItemViewModel>>.Sucess(model);
+            return ResultViewModel<List<UserItemViewModel>>.Success(model);
         }
         
 
@@ -50,7 +50,7 @@ namespace Newpedidos.Application.Services
 
             var model = UserViewModel.FromEntityUser(user);
 
-            return ResultViewModel<UserViewModel>.Sucess(model);
+            return ResultViewModel<UserViewModel>.Success(model);
         }
 
         public ResultViewModel<int> Insert(CreateUserInputModel model)
@@ -60,7 +60,7 @@ namespace Newpedidos.Application.Services
             _context.Users.Add(user);
             _context.SaveChanges();
 
-            return ResultViewModel<int>.Sucess(user.Id);
+            return ResultViewModel<int>.Success(user.Id);
         }
 
         public ResultViewModel Update(UpdateUserInputModel model)

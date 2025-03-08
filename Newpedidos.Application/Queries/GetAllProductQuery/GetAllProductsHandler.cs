@@ -20,7 +20,7 @@ namespace Newpedidos.Application.Queries.GetAllProductQuery
 
             var model = products.Select(ProductItemViewModel.FromEntityProduct).ToList();
 
-            return ResultViewModel<List<ProductItemViewModel>>.Sucess(model);
+            return ResultViewModel<List<ProductItemViewModel>>.Success(model);
         }
     }
 }

@@ -29,7 +29,7 @@ namespace Newpedidos.Application.Command.InsertProduct
 
             await _mediator.Publish(orderCreatead);
 
-            return ResultViewModel<int>.Sucess(product.Id);
+            return ResultViewModel<int>.Success(product.Id);
 
             
         }

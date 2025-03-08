@@ -24,7 +24,7 @@ namespace Newpedidos.Application.Queries.GetAllUsersQuery
 
             var model = users.Select(UserItemViewModel.FromEntityUser).ToList();
 
-            return ResultViewModel<List<UserItemViewModel>>.Sucess(model);
+            return ResultViewModel<List<UserItemViewModel>>.Success(model);
         }
     }
 }

@@ -22,7 +22,8 @@ builder.Services.AddScoped<IUserServices, UserServices>();
 
 //builder.Services.AddDbContext<AppDbContext>();
 
-//builder.Services.AddApplication();
+builder.Services.AddApplication(builder.Configuration);
+
                  
 builder.Services.AddControllers();
 

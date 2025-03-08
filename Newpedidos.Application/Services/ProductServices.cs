@@ -35,7 +35,7 @@ namespace Newpedidos.Application.Services
 
             var model = products.Select(ProductItemViewModel.FromEntityProduct).ToList();
 
-            return ResultViewModel<List<ProductItemViewModel>>.Sucess(model);
+            return ResultViewModel<List<ProductItemViewModel>>.Success(model);
         }
 
         public ResultViewModel<ProductViewModel> GetById(int id)
@@ -49,7 +49,7 @@ namespace Newpedidos.Application.Services
 
             var model = ProductViewModel.FromEntityProduct(product);
 
-            return ResultViewModel<ProductViewModel>.Sucess(model); 
+            return ResultViewModel<ProductViewModel>.Success(model); 
         }
 
         public ResultViewModel<int> Insert(CreateProductInputModel model)
@@ -59,7 +59,7 @@ namespace Newpedidos.Application.Services
             _context.Product.Add(product);
             _context.SaveChanges();
 
-            return ResultViewModel<int>.Sucess(product.Id);
+            return ResultViewModel<int>.Success(product.Id);
         }
 
         public ResultViewModel Update(UpdateProductInputModel model)

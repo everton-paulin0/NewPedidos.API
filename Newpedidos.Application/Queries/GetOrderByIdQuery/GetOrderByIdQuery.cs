@@ -36,7 +36,7 @@ namespace Newpedidos.Application.Queries.GetOrderByIdQuery
 
             var model = OrderViewModel.FromEntityOrder(order);
 
-            return ResultViewModel<OrderViewModel>.Sucess(model);
+            return ResultViewModel<OrderViewModel>.Success(model);
         }
     }
 }

@@ -29,7 +29,7 @@ namespace Newpedidos.Application.Queries.GetAllOrdersQuery
                 var model = orders.Select(OrderItemViemModel.FromEntityOrder).ToList();
 
 
-                return ResultViewModel<List<OrderItemViemModel>>.Sucess(model);
+                return ResultViewModel<List<OrderItemViemModel>>.Success(model);
             }
         }
 

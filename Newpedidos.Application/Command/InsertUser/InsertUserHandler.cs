@@ -26,7 +26,7 @@ namespace Newpedidos.Application.Command.InsertUser
 
             await _mediator.Publish(userCreatead);
 
-            return ResultViewModel<int>.Sucess(user.Id);
+            return ResultViewModel<int>.Success(user.Id);
         }
     }
 }

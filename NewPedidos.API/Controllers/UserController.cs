@@ -39,6 +39,7 @@ namespace NewPedidos.API.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Administrator , Editor ")]
         [AllowAnonymous]
         public async Task<IActionResult> PostUser(CreateUserInputModel command)
         {
@@ -76,6 +77,7 @@ namespace NewPedidos.API.Controllers
         }
 
         [HttpPut("{id}")]
+        [Authorize(Roles = "Administrator , Editor ")]
         public async Task<IActionResult> Put(int id, UpdateUserCommand command)
         {
             var result = await _mediator.Send(command);
@@ -89,6 +91,7 @@ namespace NewPedidos.API.Controllers
         }
 
         [HttpDelete]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Delete(int id)
         {
             var result = await _mediator.Send(new DeleteUserCommand(id));
@@ -102,6 +105,7 @@ namespace NewPedidos.API.Controllers
         }
 
         [HttpPatch("{id}/administrator")]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Administrator(int id)
         {
             var result = await _mediator.Send(new AdministratorUserCommand(id));
@@ -115,6 +119,7 @@ namespace NewPedidos.API.Controllers
         }
 
         [HttpPatch("{id}/reader")]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Reader(int id)
         {
             var result = await _mediator.Send(new ReaderUserCommand(id));
@@ -147,7 +152,7 @@ namespace NewPedidos.API.Controllers
 
             var viewModel = new LoginViewModel(token);
 
-            var result = ResultViewModel<LoginViewModel>.Success();
+            var result = ResultViewModel<LoginViewModel>.Success(viewModel);
 
             return Ok(result);
         }

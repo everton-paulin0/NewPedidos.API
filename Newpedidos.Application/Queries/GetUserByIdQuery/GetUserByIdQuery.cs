@@ -35,7 +35,7 @@ namespace Newpedidos.Application.Queries.GetUserByQuery
 
             var model = UserViewModel.FromEntityUser(user);
 
-            return ResultViewModel<UserViewModel>.Sucess(model);
+            return ResultViewModel<UserViewModel>.Success(model);
         }
     }
 }

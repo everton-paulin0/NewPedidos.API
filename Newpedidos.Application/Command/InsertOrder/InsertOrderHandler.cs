@@ -26,7 +26,7 @@ namespace Newpedidos.Application.Command.InsertOrder
 
             await _mediator.Publish(orderCreatead);
 
-            return ResultViewModel<int>.Sucess(order.Id);
+            return ResultViewModel<int>.Success(order.Id);
         }
     }
 }

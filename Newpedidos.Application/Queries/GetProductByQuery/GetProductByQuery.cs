@@ -39,7 +39,7 @@ namespace Newpedidos.Application.Queries.GetProductByQuery
 
                 var model = ProductViewModel.FromEntityProduct(product);
 
-                return ResultViewModel<ProductViewModel>.Sucess(model);
+                return ResultViewModel<ProductViewModel>.Success(model);
             }
         }
     }

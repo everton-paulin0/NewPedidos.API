@@ -29,7 +29,7 @@ namespace Newpedidos.Application.Model
         }
         public T? Data { get; set; }
 
-        public static ResultViewModel<T> Sucess(T data)
+        public static ResultViewModel<T> Success(T data)
             => new(data);
 
         public static ResultViewModel<T> Error(string message)

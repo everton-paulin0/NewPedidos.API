@@ -71,7 +71,7 @@ namespace Newpedidos.Application.Services
             var model = orders.Select(OrderItemViemModel.FromEntityOrder).ToList();
 
 
-            return ResultViewModel<List<OrderItemViemModel>>.Sucess(model);
+            return ResultViewModel<List<OrderItemViemModel>>.Success(model);
         }
 
         public ResultViewModel<OrderViewModel> GetById(int id)
@@ -85,7 +85,7 @@ namespace Newpedidos.Application.Services
 
             var model = OrderViewModel.FromEntityOrder(order);
 
-            return ResultViewModel<OrderViewModel>.Sucess(model);
+            return ResultViewModel<OrderViewModel>.Success(model);
         }
 
         public ResultViewModel<int> Insert(CreateOrderInputModel model)
@@ -95,7 +95,7 @@ namespace Newpedidos.Application.Services
             _context.Order.Add(order);
             _context.SaveChanges();
 
-            return ResultViewModel<int>.Sucess(order.Id);
+            return ResultViewModel<int>.Success(order.Id);
         }
 
         public ResultViewModel SetPaymentPending(int id)
